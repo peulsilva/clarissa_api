@@ -1,0 +1,1 @@
+web: gunicorn clarissa_django.wsgi
