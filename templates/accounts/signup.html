@@ -30,7 +30,9 @@
 
     <div id="container" class="box" >
         <div id="small_table">
-            <form class="site-form" method="POST" action="/accounts/signup/">
+
+            <h1>Criar novo usuário</h1>
+            <form id="form" class="site-form" method="POST" action="/accounts/signup/">
                 {% csrf_token %}
                 {{form}}
                 <p>

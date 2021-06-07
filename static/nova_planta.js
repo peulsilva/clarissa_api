@@ -1,3 +1,20 @@
+var today = new Date();
+
+var date = today.getFullYear()
+
+if (today.getMonth()+1<10)
+  date+='-0'+(today.getMonth()+1)
+
+else
+  date+='-'+(today.getMonth()+1)
+
+if (today.getDate()<10)
+  date+='-0'+today.getDate()
+else
+  date+='-'+today.getDate()
+
+document.getElementById('id_date').value=date
+
 function gravarApi(){
 
   let photo = document.getElementById("image").files[0];

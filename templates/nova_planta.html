@@ -42,27 +42,27 @@
     </div>
     <div id="container" class="box">
         <div>
-
+            
             <p id="title">Adicionar planta</p>
-            <p id="tips">Nome da planta</p>
-            <input type="text" name="Name" id="name" class='inpt' placeholder="Nome"> 
-            <p id="tips">Nome da espécie</p>
-            <select name="Species" id="species" class="inpt">
-                <option value="">Nome da espécie</option>
-                <option value="Abacateiro">Abacateiro - Persea americana</option>
-                <option value="Abacaxi">Abacaxi - Ananas comosus</option>
-                <option value="Agrião">Agrião - Rorippa nasturtium-aquaticum</option>
-                <option value="Girassol">Girassol - Girassol(nome cientifico)</option>
-            </select>
-            <p id="tips">Data do plantio</p>
-            <input type="date" name="Date" id="date" class="inpt" >
-            <p id="tips">Foto (opcional)</p>
+            <form id='form' class="site-form" action="/nova_planta/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 
-            <input type="file" accept=".png, .jpg, .jpeg" id="image" >
-
-            <section id="btn">
-                <a id ='criar_planta' href="/minhas_plantas" onclick="gravarApi()">Criar Planta</a>
-            </section>
+                <label for="id_name"><p id="tips">Nome da planta</p> </label><input type="text" placeholder="Nome da planta" name="name" maxlength="300" required="" id="id_name">
+                <label for="id_species"><p id="tips">Nome da espécie</p></label>
+                <select name="species" maxlength="300" required="" id="id_species">
+                  <option value="">Nome da espécie</option>
+                  <option value="Abacateiro">Abacateiro - Persea americana</option>
+                  <option value="Abacaxi">Abacaxi - Ananas comosus</option>
+                  <option value="Agrião">Agrião - Rorippa nasturtium-aquaticum</option>
+                  <option value="Girassol">Girassol - Girassol(nome cientifico)</option>
+                </select>
+                <label for="id_date"><p id="tips">Data do plantio</p></label><input type="date" name="date" value='' required="" id="id_date">
+                <label for="id_image"><p id="tips">Foto (opcional)</p></label><input type="file" name="image" accept="image/*" id="id_image">
+                <p>
+                    <button type="submit" id="btn" >Criar planta</button>
+                </p>
+                
+            </form>
 
         </div>
     </div>

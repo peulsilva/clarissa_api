@@ -6,3 +6,9 @@ class PlantaSerializer(serializers.ModelSerializer):
         model = Planta
         fields='__all__'
 
+
+
+
+
+
+

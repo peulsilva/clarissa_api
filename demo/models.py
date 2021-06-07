@@ -9,6 +9,6 @@ class Planta(models.Model):
     name=models.CharField(max_length=300, unique=True, blank=False)
     species=models.CharField(max_length=300,blank=False, unique=False)
     date=models.DateField(default=datetime.date(datetime.today()))
-    image=models.FileField(upload_to='Images', default='planta.png', blank=True, null=True)
-
+    image=models.ImageField(upload_to='Images', default='planta.png', blank=True, null=True)
+    usuario=models.ForeignKey(User, default=None,on_delete=models.CASCADE)
 
