@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/minhas_plantas.css">
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <div id="navbar">
+        <div id="nav">
+            <h1>Clarissa</h1>
+        </div>
+        <div id="left_bar">
+ 
+            <p>
+                <a href="/accounts/login" class="page">Login</a>
+            </p>
+            
+            <p>
+                <a href="/accounts/signup" >Criar conta</a>
+            </p>
+            
+        </div>
+        <div id="bottom_left"></div>
+        
+    </div>
+
+    <div id="container" class="box">
+        <div id="small_table">
+            <h2 style="margin-top: 1rem;">Para acessar nossos serviços faça login ou crie uma nova conta de usuário</h2>
+            <form class="site-form" method="POST" action="/accounts/login/">
+                {% csrf_token %}
+                {{form}}
+                <p>
+                    <input class="login_btn" type="submit" value="Login">
+                </p>
+                
+            </form>
+    </div>
+    
+
+
+   
+</body>
+</html>
+

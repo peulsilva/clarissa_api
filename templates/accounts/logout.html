@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/minhas_plantas.css">
+    <link rel="stylesheet" href="/static/logout.css">
+</head>
+<body>
+    <div id="navbar">
+        <div id="nav">
+            <h1>Clarissa</h1>
+        </div>
+        <div id="left_bar">
+            <a href="/nova_planta">Cadastrar nova planta </a>
+            <p>
+                <a href="/minhas_plantas" >Minhas plantas </a>
+            </p>
+            
+            <p>
+                <a href="/banco_de_dados">Banco de dados </a>
+            </p>
+
+            <p>
+                <a href="/informacoes">Informações do sistema</a>
+            </p>
+
+            <p>
+                <a href="/accounts/logout" class="page">Sair</a>
+            </p>
+            
+        </div>
+        <div id="bottom_left"></div>
+        
+    </div>
+
+    <div id="container" class="box">
+        <div id="small_table">
+            <h2 style="margin-top: 1rem;">Clique aqui para sair</h2>
+            <h3 style="margin-top: 1rem;">Esperamos que você volte logo... </h3>
+            <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+                {% csrf_token %}
+                <button class='submit_btn'type="submit">Logout</button>
+            </form>
+        </div>
+            
+    </div>
+    
+
+
+   
+</body>
+</html>

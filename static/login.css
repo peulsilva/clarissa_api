@@ -1,0 +1,31 @@
+.site-form{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size:1rem;
+    font-weight: bold;
+}
+
+#small_table{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-self: center;
+    float: left;
+    text-align: center;
+    border-radius: 5px;
+    height: 30vh;
+    width: 50vw;
+    background-color: white;
+    box-shadow: 0.5rem 0.5rem 0.5rem black;
+    
+}
+
+.login_btn{
+    border-radius: 0.4rem;
+    color: white;
+    font-weight: bold;
+    width: 5vw;
+    height: 5vh;
+    margin-top: 1rem;
+    background-color:#a349a4 ;
+}

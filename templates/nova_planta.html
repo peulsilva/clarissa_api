@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/nova_planta.css">
+
+</head>
+<body>
+    <div id="navbar">
+        <div id="nav">
+            <h1>Clarissa</h1>
+        </div>
+        <div id="left_bar">
+            <a href="/nova_planta" class="page">Cadastrar nova planta </a>
+            <a href="/minhas_plantas">
+                Minhas plantas 
+                <div id="plants">
+
+                </div>
+            </a>
+            <a href="/banco_de_dados">
+                Banco de dados 
+                <div id="bd">
+
+                </div>
+            </a>
+            <a href="/informacoes">Informações do sistema</a>
+
+            <p>
+                <a href="/accounts/logout">Sair</a>
+            </p>
+            
+            
+            
+        </div>
+        <div id="bottom_left"></div>
+
+        
+    </div>
+    <div id="container" class="box">
+        <div>
+
+            <p id="title">Adicionar planta</p>
+            <p id="tips">Nome da planta</p>
+            <input type="text" name="Name" id="name" class='inpt' placeholder="Nome"> 
+            <p id="tips">Nome da espécie</p>
+            <select name="Species" id="species" class="inpt">
+                <option value="">Nome da espécie</option>
+                <option value="Abacateiro">Abacateiro - Persea americana</option>
+                <option value="Abacaxi">Abacaxi - Ananas comosus</option>
+                <option value="Agrião">Agrião - Rorippa nasturtium-aquaticum</option>
+                <option value="Girassol">Girassol - Girassol(nome cientifico)</option>
+            </select>
+            <p id="tips">Data do plantio</p>
+            <input type="date" name="Date" id="date" class="inpt" >
+            <p id="tips">Foto (opcional)</p>
+
+            <input type="file" accept=".png, .jpg, .jpeg" id="image" >
+
+            <section id="btn">
+                <a id ='criar_planta' href="/minhas_plantas" onclick="gravarApi()">Criar Planta</a>
+            </section>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/nova_planta.js"></script>
+
+</body>
+
+</html>
+

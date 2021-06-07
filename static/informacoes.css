@@ -1,0 +1,16 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#infos{
+    margin-top: 10vh ;
+    text-align: center;
+    border-radius: 5px;
+    height: 60vh;
+    width: 40vw;
+    background-color: white;
+    box-shadow: 0.5rem 0.5rem 0.5rem black;
+}

@@ -1,0 +1,71 @@
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#container div{
+    text-align: center;
+    border-radius: 5px;
+    height: 80vh;
+    width: 40vw;
+    background-color: white;
+    box-shadow: 0.5rem 0.5rem 0.5rem black;
+}
+
+
+.inpt{
+    
+    padding-left: 0.2rem;
+    font-size: 1.5rem;
+    height: 5vh;
+    width: 30vw;
+    margin-top: 1vh;
+}
+
+#container div select{
+    padding-left: 0.2rem;
+    font-size: 1.5rem;
+    height: 5vh;
+    width: 30vw;
+    margin-top: 1vh;
+}
+
+#btn{
+    text-align: center;
+    align-self: center;
+    margin-top: 10vh;
+    margin-left: 15vw;
+    width: 10vw;
+    height: 6vh;
+    font-size: 1.5rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    box-shadow:0.2rem 0.2rem 0.2rem black;
+}
+
+#btn a{
+    text-decoration: none;
+    color: white;
+}
+
+#title{
+    font-size: 3rem;
+}
+
+#tips{
+    margin-top: 2vh;
+    padding-left: 4.3rem;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#image{
+    padding-left: 0.2rem;
+    font-size: 1.2rem;
+    height: 5vh;
+    width: 30vw;
+    margin-top: 1vh;
+
+}
