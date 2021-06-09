@@ -49,10 +49,22 @@
                     <th>Data de plantio</th>
                     <th>Link</th>
                 </tr>
+
+                    {% for planta in plantas %}
+                    <tr>    
+                        <td> {{planta.name}} </td>
+                        <td>{{planta.species}}</td>
+                        <td>{{planta.date}}</td>
+                        <td><a href="/dados_planta" onclick=' dadosPage("{{planta.name}}")'>Ir</a></td>
+                    </tr>
+
+                    {% endfor %}
+                
             </table>
         </div>
-        <a id="apagar_tudo" onclick="apagarTudo()" href="/nova_planta">Apagar todas as plantas</a>
+        <a id="apagar_tudo" onclick="" href="/apagar">Apagar todas as plantas</a>
     
+
 
 
     </div>

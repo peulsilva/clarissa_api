@@ -16,9 +16,9 @@ def superuser_required():
     return wrapper
 
 
-# @superuser_required()
-class PlantaViewset(viewsets.ModelViewSet):
-    # login_url = '/accounts/login'
+@superuser_required()
+class PlantaViewset(LoginRequiredMixin,viewsets.ModelViewSet):
+    login_url = '/accounts/login'
     serializer_class = PlantaSerializer
     queryset = Planta.objects.all()
 

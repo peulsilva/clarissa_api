@@ -3,10 +3,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body onload='reload()'>
     <div id="navbar">
         <div id="nav">
             <h1>Clarissa</h1>
@@ -29,7 +30,7 @@
                 <a href="/accounts/logout">Sair</a>
             </p>
             
-            
+
             
             
         </div>
@@ -38,8 +39,14 @@
     </div>
 
     <div id="container">
+
+            {% for plant in planta %}
+
+            
+
+       
         <div id="infos">
-            <img src="planta.png" alt="" id="img">
+            <img src="/uploads/{{plant.image}}" alt="" id="img">
             <section id="square">
                 <h2>Incidência Solar</h2>
                 <h2 id="IncidenciaSolar">Sem dados</h2>
@@ -53,10 +60,10 @@
             </section>
 
             <section id="square_special">
-                <h2 id="nome">Nome</h2>
-                <h3 id="especie">Espécie: Sem dados</h3>
-                <h4 id="agp">Idade da planta:</h4>
-                <h4 id="idade">Sem dados</h4>
+                <h2 id="nome">{{plant.name}}</h2>
+                <h3 id="especie">Espécie: {{plant.species}}</h3>
+                <h4 id="agp">Idade da planta: </h4>
+                <h4 id="idade">{{plant.date}}</h4>
             </section>
             <section id="square">
                 <h2>Umidade: </h2>
@@ -69,9 +76,10 @@
                 <h2 id="Regada">Sem dados</h2>
                 <h3 id="atualizado"></h3>
             </section>
+            {% endfor %}
 
             <section id='delete'>
-                <a href="/minhas_plantas" onclick="Delete()">Deletar</a>
+                <a href="/deletar" >Deletar</a>
             </section>
             
         </div>
