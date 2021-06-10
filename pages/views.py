@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from demo.models import Planta
 from . import forms
+from datetime import date
 
 # Create your views here.
-def changePage(name):
-    return name
+
 
 @login_required(login_url='/accounts/login')
 def home_page(request):
@@ -56,6 +57,8 @@ def nova_planta(request):
             instance.usuario=request.user
             instance.save()
             return redirect('pages:minhas_plantas')
+        else:
+            return render(request,'nova_planta.html', {'message': 'Dados inválidos'})
     else:
         form = forms.NovaPlanta()
     return render(request,'nova_planta.html', {'form': form})
