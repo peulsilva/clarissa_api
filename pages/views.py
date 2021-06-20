@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from demo.models import Planta
+from demo.models import Planta,BD
 from . import forms
 from datetime import date
 
@@ -19,7 +19,8 @@ def minhas_plantas(request):
 
 @login_required(login_url='/accounts/login')
 def banco_de_dados(request):
-    return render(request,'banco_de_dados.html')
+    bd=BD.objects.all()
+    return render(request,'banco_de_dados.html', {'bd': bd})
 
 @login_required(login_url='/accounts/login')
 def dados_planta(request):
@@ -27,7 +28,26 @@ def dados_planta(request):
     name=request.COOKIES.get('data')
     planta=Planta.objects.all().filter(name=request.COOKIES.get('data'))
 
-    return render(request,'dados_planta.html', {'planta': planta})
+    species=''
+    for plant in planta:
+        species=plant.species
+    bd=BD.objects.all().filter(nome_comum=species)
+
+    if len(planta)!=0:
+        plant=Planta.objects.get(name=name)
+        if request.method == 'POST':
+            form = forms.RegarPlanta(request.POST, instance=plant)
+            if form.is_valid():
+                form.save()
+
+            else:
+                return render(request, 'nova_planta.html', {'message': 'Dados inválidos'})
+        else:
+            form = forms.RegarPlanta()
+
+        return render(request,'dados_planta.html', {'planta': planta, 'form':form, 'bd': bd})
+    else:
+        return render(request, 'dados_planta.html')
 
 @login_required(login_url='/accounts/login')
 def informacoes(request):
@@ -47,7 +67,7 @@ def deletar(request):
 
 @login_required(login_url='/accounts/login')
 def nova_planta(request):
-
+    bd = BD.objects.all()
     if request.method=='POST':
         form=forms.NovaPlanta(request.POST,request.FILES)
         if form.is_valid():
@@ -61,5 +81,5 @@ def nova_planta(request):
             return render(request,'nova_planta.html', {'message': 'Dados inválidos'})
     else:
         form = forms.NovaPlanta()
-    return render(request,'nova_planta.html', {'form': form})
+    return render(request,'nova_planta.html', {'form': form ,'bd': bd})
 

@@ -6,6 +6,7 @@
 
     <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/dados_planta.css">
 </head>
 <body onload='reload()'>
     <div id="navbar">
@@ -40,22 +41,25 @@
 
     <div id="container">
 
-            {% for plant in planta %}
+        {% for plant in planta %}
 
             
-
+        {% for item in bd %}
        
         <div id="infos">
             <img src="/uploads/{{plant.image}}" alt="" id="img">
             <section id="square">
                 <h2>Incidência Solar</h2>
                 <h2 id="IncidenciaSolar">{{plant.incidencia_solar}}</h2>
+
+                <h3>Ideal: {{item.sol_horas}} horas/dia</h3>
                 <h3 id="atualizado"></h3>
             </section>
 
             <section id="square">
                 <h2>Temperatura: </h2>
                 <h2 id="Temperatura">{{plant.temperatura}}</h2>
+                <h3>Ideal: {{item.temperatura}} °C</h3>
                 <h3 id="atualizado"></h3>
             </section>
 
@@ -72,11 +76,22 @@
             </section>
 
             <section id="square">
-                <h2>Precisa ser regada?</h2>
-                <h2 id="Regada">Sem dados</h2>
+                <h2>Regada em:</h2>
+                <h3 id="Regada">{{plant.regada}}</h3>
+
+                <h3 style="padding-top: 1rem;">Regar a cada {{item.rega_dias}} dias</h3>
+                <h3></h3>
                 <h3 id="atualizado"></h3>
             </section>
+
             {% endfor %}
+            {% endfor %}
+
+            <form id='form' class="site-form" action="/dados_planta/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="date" name="regada" value="" required='' id="id_regada">
+                <button type="submit" id="btn_submit">Regar</button>
+            </form>
 
             <section id='delete'>
                 <a href="/deletar" >Deletar</a>

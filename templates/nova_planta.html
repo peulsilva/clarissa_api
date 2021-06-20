@@ -51,10 +51,9 @@
                 <label for="id_species"><p id="tips">Nome da espécie</p></label>
                 <select name="species" maxlength="300" required="" id="id_species">
                   <option value="">Nome da espécie</option>
-                  <option value="Abacateiro">Abacateiro - Persea americana</option>
-                  <option value="Abacaxi">Abacaxi - Ananas comosus</option>
-                  <option value="Agrião">Agrião - Rorippa nasturtium-aquaticum</option>
-                  <option value="Girassol">Girassol - Girassol(nome cientifico)</option>
+                  {% for item in bd %}
+                  <option value="{{item.nome_comum}}">{{item.nome_comum}}</option>
+                  {% endfor %}
                 </select>
                 <label for="id_date"><p id="tips">Data do plantio</p></label><input type="date" name="date" value='' required="" id="id_date">
                 <label for="id_image"><p id="tips">Foto (opcional)</p></label><input type="file" name="image" accept="image/*" id="id_image">
@@ -62,7 +61,9 @@
                     <button type="submit" id="btn" >Criar planta</button>
                 </p>
                 <script>
-                    alert('{{ message }}');
+                    let message='{{message}}'
+                    if (message != '')
+                        alert('{{ message }}');
                 </script>
                 
             </form>

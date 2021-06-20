@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/banco_de_dados.css">
 </head>
 <body>
     <div id="navbar">
@@ -35,8 +36,34 @@
         
     </div>
 
-    <div id="container">
+    <div id="container" class="box">
+        <div id="small_table1">
+            <table id="plantas">
 
+                <tr>
+                    <th>Nome comum</th>
+                    <th>Espécie</th>
+                    <th>Temperatura ideal</th>
+                    <th>Horas de sol por dia</th>
+                    <th>Regar a cada</th>
+                    <th>Observações</th>
+                </tr>
+
+                    {% for item in bd %}
+                    <tr>    
+                        <td> {{item.nome_comum}} </td>
+                        <td>{{item.nome_especie}}</td>
+                        <td>{{item.temperatura}} °C</td>
+                        <td>{{item.sol_horas}} hora</td>
+                        <td>{{item.rega_dias}} dias</td>
+                        <td>{{item.obs}}</td>
+                    </tr>
+
+                    {% endfor %}
+                
+            </table>
+
+        </div>
     </div>
     
 </body>

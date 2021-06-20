@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import PlantaSerializer
-from .models import Planta
+from .serializers import PlantaSerializer, BDSerializer
+from .models import Planta ,BD
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.shortcuts import render
 # Create your views here.
@@ -22,6 +22,12 @@ class PlantaViewset(LoginRequiredMixin,viewsets.ModelViewSet):
     serializer_class = PlantaSerializer
     queryset = Planta.objects.all()
 
+
+@superuser_required()
+class BDViewset(LoginRequiredMixin, viewsets.ModelViewSet):
+    login_url = '/accounts/login'
+    serializer_class = BDSerializer
+    queryset = BD.objects.all()
 
 
 

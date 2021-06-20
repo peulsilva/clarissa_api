@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 
 routers=routers.DefaultRouter()
 routers.register('plantas_registradas', views.PlantaViewset)
+routers.register('BD', views.BDViewset)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('', include(routers.urls)),
