@@ -1,9 +1,8 @@
 #small_table1{
     
-    margin-left: auto;
-    margin-right: auto;
+
     border-radius: 5px;
-    height: 80vh;
+    height: 100vh;
     width: 60vw;
     background-color: white;
     box-shadow: 0.5rem 0.5rem 0.5rem black;
@@ -20,7 +19,7 @@
 table{
     width: 100%;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     border-collapse: collapse;
 }
 
