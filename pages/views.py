@@ -7,23 +7,39 @@ from datetime import date
 
 # Create your views here.
 
+def restart_plantas():
+    global planta_name
+    planta_name = ''
+    global planta_especie
+    planta_especie = ''
+    global usuario
+    usuario = ''
+
+@login_required(login_url='/accounts/login')
+def qrcode(request):
+    return render(request,'qrcode.html', {'planta': planta_name, 'especie':planta_especie, 'usuario': usuario})
 
 @login_required(login_url='/accounts/login')
 def home_page(request):
+    restart_plantas()
     return render(request,'login.html')
 
 @login_required(login_url='/accounts/login')
 def minhas_plantas(request):
+    restart_plantas()
+
     minhas_plantas=Planta.objects.all().filter(usuario=request.user)
     return render(request,'minhas_plantas.html', {'plantas':minhas_plantas ,'user':request.user})
 
 @login_required(login_url='/accounts/login')
 def banco_de_dados(request):
+    restart_plantas()
     bd=BD.objects.all()
     return render(request,'banco_de_dados.html', {'bd': bd})
 
 @login_required(login_url='/accounts/login')
 def dados_planta(request):
+    restart_plantas()
     global name
     name=request.COOKIES.get('data')
     planta=Planta.objects.all().filter(name=request.COOKIES.get('data'))
@@ -51,6 +67,7 @@ def dados_planta(request):
 
 @login_required(login_url='/accounts/login')
 def informacoes(request):
+    restart_plantas()
 
     return render(request,'informacoes.html')
 
@@ -67,16 +84,22 @@ def deletar(request):
 
 @login_required(login_url='/accounts/login')
 def nova_planta(request):
+    restart_plantas()
     bd = BD.objects.all()
     if request.method=='POST':
         form=forms.NovaPlanta(request.POST,request.FILES)
         if form.is_valid():
-
             #save plant to db
             instance=form.save(commit=False)
+            global planta_name
+            planta_name=instance.name
+            global planta_especie
+            planta_especie=instance.species
+            global usuario
+            usuario=request.user
             instance.usuario=request.user
             instance.save()
-            return redirect('pages:minhas_plantas')
+            return redirect('pages:qrcode')
         else:
             return render(request,'nova_planta.html', {'message': 'Dados inválidos'})
     else:

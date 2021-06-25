@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarissa - sistema de IoT para monitoramento e cuidado de plantas caseiras</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/minhas_plantas.css">
+</head>
+<body>
+    <div id="navbar">
+        <div id="nav">
+            <h1>Clarissa</h1>
+        </div>
+        <div id="left_bar">
+            <a href="/nova_planta">Cadastrar nova planta </a>
+            <p>
+                <a href="/minhas_plantas" >Minhas plantas </a>
+            </p>
+
+            <p>
+                <a href="/banco_de_dados">Banco de dados </a>
+            </p>
+
+            <p>
+                <a href="/informacoes">Informações do sistema</a>
+            </p>
+
+            <p>
+                <a href="/accounts/logout">Sair</a>
+            </p>
+
+            <p style="display: none;" id="user_id">
+                {{form}}
+            </p>
+
+
+        </div>
+        <div id="bottom_left"></div>
+
+    </div>
+
+    <div id="container" class="box">
+        <h1>
+            Salve os dados da sua planta num QRCODE
+        </h1>
+
+        <img id="imageQRCode" src="">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            let planta='{{ planta }}'
+            if (planta != '')
+                var conteudo = 'Oi, eu me chamo {{planta}}, sou um(a) {{ especie }} e meu pai/mãe é {{ usuario }} '
+
+            else {
+                var conteudo='Crie uma planta primeiro'
+            }
+            var GoogleCharts = 'https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=';
+            var imagemQRCode = GoogleCharts + conteudo;
+            $('#imageQRCode').attr('src', imagemQRCode);
+
+        </script>
+    </div>

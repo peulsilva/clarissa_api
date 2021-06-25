@@ -3,7 +3,6 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 
-
 # Create your models here.
 class Planta(models.Model):
     name=models.CharField(max_length=300, unique=True, blank=False)
@@ -15,6 +14,7 @@ class Planta(models.Model):
     temperatura=models.CharField(max_length=256, default='Sem dados')
     umidade=models.CharField(max_length=256, default='Sem dados')
     usuario=models.ForeignKey(User, default=None,on_delete=models.CASCADE)
+
 
 
 class BD(models.Model):
